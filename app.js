@@ -3,6 +3,7 @@ import cors from "cors";
 import libroRoutes from "./src/routes/libro.routes.js";
 import autorRoutes from "./src/routes/autor.routes.js";
 import editorialRoutes from "./src/routes/editorial.routes.js";
+import informeRoutes from "./src/routes/informes.routes.js";
 
 export const app = express();
 
@@ -14,3 +15,4 @@ app.get("/", (req, res) => res.send("📚 API funcionando correctamente"));
 app.use("/api/libros", libroRoutes);
 app.use("/api/autores", autorRoutes);
 app.use("/api/editoriales", editorialRoutes);
+app.use("/api/informe", informeRoutes);
