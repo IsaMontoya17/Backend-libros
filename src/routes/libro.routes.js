@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/", libroController.crear);
 router.get("/", libroController.listar);
+router.get("/:id", libroController.obtenerUno);
 router.put("/:id", libroController.actualizar);
 router.delete("/:id", libroController.eliminar);
 
