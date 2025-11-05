@@ -37,14 +37,14 @@ const generarInforme = async () => {
     // 👩‍🏫 Autores
     const totalAutores = autores.length;
     const autoresConLibros = autores.filter(autor =>
-      libros.some(libro => libro.autor?._id === autor._id)
+      libros.some(libro => libro.autor && libro.autor === String(autor._id))
     ).length;
     const porcentajeAutoresConLibros = ((autoresConLibros / totalAutores) * 100).toFixed(2);
 
     // 🏢 Editoriales
     const totalEditoriales = editoriales.length;
     const editorialesConLibros = editoriales.filter(editorial =>
-      libros.some(libro => libro.editorial?._id === editorial._id)
+      libros.some(libro => libro.editorial && libro.editorial === String(editorial._id))
     ).length;
     const porcentajeEditorialesConLibros = ((editorialesConLibros / totalEditoriales) * 100).toFixed(2);
 
