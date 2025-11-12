@@ -3,6 +3,8 @@ import { editorialController } from "../controllers/editorial.controller.js";
 
 const router = express.Router();
 
+router.get("/buscar/:nombre", editorialController.buscarPorNombre);
+
 router.get("/", editorialController.listar);
 router.get("/:id", editorialController.obtenerUno);
 router.post("/", editorialController.crear);

@@ -25,5 +25,17 @@ export const editorialController = {
     eliminada
       ? res.json({ mensaje: "Editorial eliminada" })
       : res.status(404).json({ mensaje: "Editorial no encontrada" });
+  },
+
+  buscarPorNombre: async (req, res) => {
+    try {
+      const { nombre } = req.params;
+      const resultados = await editorialService.buscarPorNombre(nombre);
+      resultados.length > 0
+        ? res.json(resultados)
+        : res.status(404).json({ mensaje: "No se encontraron editoriales con ese nombre" });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
   }
 };
