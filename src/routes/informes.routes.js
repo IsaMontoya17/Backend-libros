@@ -9,10 +9,12 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
 
+    const BASE_URL = process.env.BASE_URL || "http://localhost:5000";
+
     const [librosResp, autoresResp, editorialesResp] = await Promise.all([
-      fetch("http://localhost:5000/api/libros"),
-      fetch("http://localhost:5000/api/autores"),
-      fetch("http://localhost:5000/api/editoriales"),
+      fetch(`${BASE_URL}/api/libros`),
+      fetch(`${BASE_URL}/api/autores`),
+      fetch(`${BASE_URL}/api/editoriales`),
     ]);
 
     const [libros, autores, editoriales] = await Promise.all([
