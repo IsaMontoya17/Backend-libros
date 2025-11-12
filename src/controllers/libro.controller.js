@@ -28,5 +28,38 @@ export const libroController = {
     eliminado
       ? res.json({ mensaje: "Libro eliminado" })
       : res.status(404).json({ mensaje: "Libro no encontrado" });
+  },
+
+  buscarPorTitulo: async (req, res) => {
+    try {
+      const resultados = await libroService.buscarPorTitulo(req.params.titulo);
+      resultados.length > 0
+        ? res.json(resultados)
+        : res.status(404).json({ mensaje: "No se encontraron libros con ese título" });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  },
+
+  buscarPorCategoria: async (req, res) => {
+    try {
+      const resultados = await libroService.buscarPorCategoria(req.params.categoria);
+      resultados.length > 0
+        ? res.json(resultados)
+        : res.status(404).json({ mensaje: "No se encontraron libros en esa categoría" });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  },
+
+  buscarPorDisponibilidad: async (req, res) => {
+    try {
+      const resultados = await libroService.buscarPorDisponibilidad(req.params.disponible);
+      resultados.length > 0
+        ? res.json(resultados)
+        : res.status(404).json({ mensaje: "No se encontraron libros con esa disponibilidad" });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
   }
 };
